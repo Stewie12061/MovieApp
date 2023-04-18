@@ -2,6 +2,7 @@ package com.example.movie_app;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.net.Uri;
@@ -14,8 +15,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.example.movie_app.Adapter.CastCrewAdapter;
 import com.example.movie_app.Adapter.FavoriteAdapter;
+import com.example.movie_app.Adapter.MovieAdapter;
+import com.example.movie_app.Model.CastCrew;
 import com.example.movie_app.Model.Favorite;
+import com.example.movie_app.Model.Movies;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -26,7 +31,10 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,6 +47,7 @@ public class MovieDetailActivity extends AppCompatActivity {
     private MediaController mediaController;
     ImageButton backBtn, favBtn;
     String movieImage;
+    List<CastCrew> castCrewList;
 
     private CollectionReference favoriteCollectionRef;
     Boolean checkIsInFavorite = false;
@@ -68,6 +77,8 @@ public class MovieDetailActivity extends AppCompatActivity {
         movieDes = findViewById(R.id.movie_description);
 
         rvCast = findViewById(R.id.rvCast);
+        rvCast.setLayoutManager(new LinearLayoutManager(getApplicationContext(),RecyclerView.HORIZONTAL,false));
+
 
         getDataMovieDetail();
         checkIfMovieIsFavorite(movieId);
@@ -91,8 +102,32 @@ public class MovieDetailActivity extends AppCompatActivity {
                 }
             }
         });
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getCastData();
+    }
 
+    private void getCastData(){
+        castCrewList = new ArrayList<>();
+        DocumentReference moviesReference = db.collection("casts").document(movieId);
+        moviesReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        DocumentSnapshot documentSnapshot = task.getResult();
+                        List<Map<String,String>> listItem = (List<Map<String, String>>) documentSnapshot.get(movieId);
+                        for (Map<String,String> item : listItem){
+                            String name = item.get("castName");
+                            String url = item.get("castUrl");
+                            CastCrew cast = new CastCrew(name, url);
+                            castCrewList.add(cast);
+                        }
+                        CastCrewAdapter adapter = new CastCrewAdapter(castCrewList);
+                        rvCast.setAdapter(adapter);
+                    }
+                });
     }
     private void checkIfMovieIsFavorite(String movieId) {
         favoriteCollectionRef.document(movieId)
@@ -151,7 +186,8 @@ public class MovieDetailActivity extends AppCompatActivity {
                                 String name = documentSnapshot.getString("movieName");
                                 String description = documentSnapshot.getString("movieDescription");
                                 String movieUrl = documentSnapshot.getString("movieWatchLink");
-                                movieImage = documentSnapshot.getString("movieImage");
+
+                                //set url for video
                                 setUpVideoView(movieUrl);
                                 movieName.setText(name);
                                 movieDes.setText(description);
@@ -161,6 +197,7 @@ public class MovieDetailActivity extends AppCompatActivity {
                         }
                     }
                 });
+
     }
     private void setUpVideoView(String url){
         mediaController = new MediaController(this);

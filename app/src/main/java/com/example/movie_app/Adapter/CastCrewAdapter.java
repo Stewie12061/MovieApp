@@ -13,15 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.movie_app.Model.CastCrew;
 import com.example.movie_app.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class CastCrewAdapter extends RecyclerView.Adapter<CastCrewAdapter.CastCrewViewHolder> {
-    Context context;
     List<CastCrew> crewLists;
 
-    public CastCrewAdapter(Context mContext, List<CastCrew> crewLists) {
-        this.context = mContext;
+    public CastCrewAdapter(List<CastCrew> crewLists) {
         this.crewLists = crewLists;
 
     }
@@ -35,11 +34,12 @@ public class CastCrewAdapter extends RecyclerView.Adapter<CastCrewAdapter.CastCr
 
     @Override
     public void onBindViewHolder(@NonNull CastCrewViewHolder holder, int position) {
-        final CastCrew castCrew = crewLists.get(position);
+        CastCrew castCrew = crewLists.get(position);
         if(castCrew == null) return;
         // Load image url
-        Glide.with(holder.imageCast).load(crewLists.get(position).getCimage()).into(holder.imageCast);
-        holder.nameCast.setText(castCrew.getCname());
+        Picasso.get().load(castCrew.getCastUrl()).into(holder.imageCast);
+
+        holder.nameCast.setText(castCrew.getCastName());
 
         if(position == getItemCount() - 1) {
             // Set the margin for the viewholder
