@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/dark_2"
+            tools:context=".AccountActivity">
+
+            <ImageButton
+                android:id="@+id/account_button_back"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="25dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView8"
+                app:layout_constraintEnd_toStartOf="@+id/textView8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView8"
+                app:srcCompat="@drawable/ic_back" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/releway_b7"
+                android:text="Account information"
+                android:textSize="22dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/account_avatar"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="50dp"
+                app:cardCornerRadius="100dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView8">
+
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/avatar" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="25dp"
+                android:background="@color/dark_2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/account_avatar">
+
+                <Button
+                    android:id="@+id/account_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/dark_2"
+                    android:drawableRight="@xml/ic_right"
+                    android:fontFamily="@font/releway_b4"
+                    android:gravity="left|center_vertical"
+                    android:padding="10dp"
+                    android:text="Name"
+                    android:textAllCaps="false"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/account_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/dark_2"
+                    android:drawableRight="@xml/ic_right"
+                    android:fontFamily="@font/releway_b4"
+                    android:gravity="left|center_vertical"
+                    android:padding="10dp"
+                    android:text="Email"
+                    android:textAllCaps="false"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/account_name" />
+
+                <Button
+                    android:id="@+id/account_dob"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/dark_2"
+                    android:drawableRight="@xml/ic_right"
+                    android:fontFamily="@font/releway_b4"
+                    android:gravity="left|center_vertical"
+                    android:padding="10dp"
+                    android:text="Birthday"
+                    android:textAllCaps="false"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/account_email" />
+
+                <Button
+                    android:id="@+id/account_uid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/dark_2"
+                    android:drawableRight="@xml/ic_right"
+                    android:fontFamily="@font/releway_b4"
+                    android:gravity="left|center_vertical"
+                    android:padding="10dp"
+                    android:text="UID"
+                    android:textAllCaps="false"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/account_dob" />
+
+                <Button
+                    android:id="@+id/account_story"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/dark_2"
+                    android:drawableRight="@xml/ic_right"
+                    android:fontFamily="@font/releway_b4"
+                    android:gravity="left|center_vertical"
+                    android:padding="10dp"
+                    android:text="Reset password"
+                    android:textAllCaps="false"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/account_uid" />
+
+                <Button
+                    android:id="@+id/account_logout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/dark_2"
+                    android:drawableRight="@xml/ic_right"
+                    android:fontFamily="@font/releway_b4"
+                    android:gravity="left|center_vertical"
+                    android:padding="10dp"
+                    android:textColor="@color/select_color"
+                    android:text="Logout"
+                    android:textAllCaps="false"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/account_story" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</RelativeLayout>

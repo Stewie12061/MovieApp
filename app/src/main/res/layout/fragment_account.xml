@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragment.AccountFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/dark_2"
+                tools:context=".ProfileActivity">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView3"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:layout_marginTop="52dp"
+                    app:cardCornerRadius="100dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imageView7"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/avatar" />
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/username_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/releway_b7"
+                    android:text="\@HydraCoder"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    app:layout_constraintEnd_toEndOf="@+id/cardView3"
+                    app:layout_constraintStart_toStartOf="@+id/cardView3"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView3" />
+
+                <TextView
+                    android:id="@+id/email_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/releway_b4"
+                    android:text="ngodat.it213@gmail.com"
+                    android:textColor="@color/un_select_color"
+                    android:textSize="16dp"
+                    app:layout_constraintEnd_toEndOf="@+id/username_profile"
+                    app:layout_constraintStart_toStartOf="@+id/username_profile"
+                    app:layout_constraintTop_toBottomOf="@+id/username_profile" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="25dp"
+                    android:paddingBottom="137dp"
+                    android:background="@color/dark_2"
+                    app:layout_constraintTop_toBottomOf="@+id/email_profile">
+
+
+                    <Button
+                        android:id="@+id/profile_button_animelist"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/dark_2"
+                        android:fontFamily="@font/releway_b4"
+                        android:textSize="18dp"
+                        android:drawableRight="@xml/ic_right"
+                        android:gravity="left|center_vertical"
+                        android:padding="10dp"
+                        android:text="Movie list"
+                        android:textAllCaps="false"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/profile_button_watched"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/dark_2"
+                        android:fontFamily="@font/releway_b4"
+                        android:textSize="18dp"
+                        android:drawableRight="@xml/ic_right"
+                        android:gravity="left|center_vertical"
+                        android:padding="10dp"
+                        android:text="Watched"
+                        android:textAllCaps="false"
+                        app:layout_constraintTop_toBottomOf="@+id/profile_button_animelist" />
+
+                    <Button
+                        android:id="@+id/profile_button_my_review"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/dark_2"
+                        android:fontFamily="@font/releway_b4"
+                        android:textSize="18dp"
+                        android:drawableRight="@xml/ic_right"
+                        android:gravity="left|center_vertical"
+                        android:padding="10dp"
+                        android:text="My review"
+                        android:textAllCaps="false"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/profile_button_watched" />
+
+                    <Button
+                        android:id="@+id/profile_button_setting"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/dark_2"
+                        android:fontFamily="@font/releway_b4"
+                        android:textSize="18dp"
+                        android:drawableRight="@xml/ic_right"
+                        android:gravity="left|center_vertical"
+                        android:padding="10dp"
+                        android:text="Settings"
+                        android:textAllCaps="false"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/profile_button_my_review" />
+
+                    <Button
+                        android:id="@+id/profile_button_logout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/dark_2"
+                        android:textColor="@color/select_color"
+                        android:fontFamily="@font/releway_b4"
+                        android:textSize="18dp"
+                        android:gravity="left|center_vertical"
+                        android:padding="10dp"
+                        android:text="Log out"
+                        android:textAllCaps="false"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/profile_button_setting" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</FrameLayout>

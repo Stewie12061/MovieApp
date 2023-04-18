@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">Movie App</string>
+    // Onboarding screen
+    <string name="onboar_title">New Experience</string>
+    <string name="onboar_description">Watch a new imageMovie much\neasier than any before</string>
+    <string name="get_started">Get Started</string>
+    // Sign-in screen
+    <string name="sign_title">Welcome Back,\nMovie Lover!</string>
+    <string name="email_add">Email Address</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="forget_pw">Forgot Password?</string>
+    <string name="login">Login</string>
+    <string name="si_create_acc">Create new account?</string>
+    <string name="full_name">Full Name</string>
+    <string name="confirm_pw">Confirm Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    // Sign-up screen
+    <string name="su_title">Create New\nYour Account</string>
+    // User Profiling
+    <string name="select_genre">Select Your\nFavorite Genre</string>
+    <string name="horror">Horror</string>
+    <string name="action">Action</string>
+    <string name="drama">Drama</string>
+    <string name="War">War</string>
+    <string name="Comedy">Comedy</string>
+    <string name="Crime">Crime</string>
+    <string name="select_lang">Select Your\nFavorite language</string>
+    <string name="lang_bahasa">Bahasa</string>
+    <string name="lang_en">English</string>
+    <string name="lang_vi">Vietnamese</string>
+    <string name="lang_jp">Japanese</string>
+    <string name="lang_kr">Korean</string>
+    // Confirmation Profile
+    <string name="confirm_title">Confirm New\nAccount</string>
+    <string name="welcome">Welcome</string>
+    <string name="create_acc">Create My Account</string>
+    // Home full
+    <string name="homefull_title">Find Your Best\nMovie</string>
+    <string name="search_title">Search imageMovie</string>
+    <string name="all">All</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="coming_soon">Coming Soon</string>
+    <string name="movies">Movies</string>
+    <string name="wallet">Wallet</string>
+    <string name="my_ticket">My Ticket</string>
+    <string name="promo">Promo</string>
+    <string name="view_all">View all</string>
+    <string name="promo_title">Student Holiday</string>
+    <string name="promo_description">Movies</string>
+    <string name="promo_saleoff">Movies</string>
+    <string name="movie_name">Ralph Breaks the Internet</string>
+    <string name="rate_star">4.7</string>
+    <string name="movie_category">Movies</string>
+    <string name="movie_time">1h 41min</string>
+    <string name="about_movie">About Movie</string>
+    <string name="review">Review</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="movie_description">Wreck-It Ralph wants to be loved by many people like his kind friend, Fix-It Felix. But no one likes evil characters like Ralph.\nRalph\'s goal was simple, wanting to win and get a medal to be considered a hero. But without realizing Ralph instead paved the way for criminals who can kill all the games in the game complex. Read more</string>
+    <string name="read_more">Read more</string>
+    <string name="cast">Cast and Crew</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
