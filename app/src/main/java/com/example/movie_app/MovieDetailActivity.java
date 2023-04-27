@@ -5,11 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +37,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -41,11 +46,12 @@ import java.util.Map;
 
 public class MovieDetailActivity extends AppCompatActivity {
     private FirebaseFirestore db;
-    private VideoView videoView;
+    private ImageView imageView;
     private TextView movieName, movieDes;
     private RecyclerView rvCast;
     private MediaController mediaController;
-    ImageButton backBtn, favBtn;
+    ImageButton favBtn, watchMovieBtn;
+    Button backBtn;
     String movieImage;
     List<CastCrew> castCrewList;
 
@@ -53,6 +59,7 @@ public class MovieDetailActivity extends AppCompatActivity {
     Boolean checkIsInFavorite = false;
 
     String movieId;
+    String movieUrl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,8 +68,8 @@ public class MovieDetailActivity extends AppCompatActivity {
         movieId = getIntent().getStringExtra("movieId");
         db = FirebaseFirestore.getInstance();
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String currentUserId = user.getUid();
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        String currentUserId = sharedPreferences.getString("userId", "");
         favoriteCollectionRef = db.collection("users").document(currentUserId).collection("favorite");
 
         backBtn = findViewById(R.id.button_back_detail);
@@ -72,7 +79,7 @@ public class MovieDetailActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        videoView = findViewById(R.id.movie_trailer);
+        imageView = findViewById(R.id.imgView);
         movieName = findViewById(R.id.movie_name);
         movieDes = findViewById(R.id.movie_description);
 
@@ -102,12 +109,23 @@ public class MovieDetailActivity extends AppCompatActivity {
                 }
             }
         });
+
+        watchMovieBtn = findViewById(R.id.btnWatchMovie);
+        watchMovieBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(getApplicationContext(),WatchMovieActivity.class);
+                intent.putExtra("movieUrl",movieUrl);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         getCastData();
+        getDataMovieDetail();
     }
 
     private void getCastData(){
@@ -185,12 +203,13 @@ public class MovieDetailActivity extends AppCompatActivity {
                             if (documentSnapshot.exists()){
                                 String name = documentSnapshot.getString("movieName");
                                 String description = documentSnapshot.getString("movieDescription");
-                                String movieUrl = documentSnapshot.getString("movieWatchLink");
+                                movieUrl = documentSnapshot.getString("movieWatchLink");
+                                movieImage = documentSnapshot.getString("movieImage");
 
                                 //set url for video
-                                setUpVideoView(movieUrl);
                                 movieName.setText(name);
                                 movieDes.setText(description);
+                                Picasso.get().load(movieImage).into(imageView);
                             }
                         }else {
                             Toast.makeText(getApplicationContext(), "Không lấy được dữ liệu", Toast.LENGTH_SHORT).show();
@@ -199,13 +218,5 @@ public class MovieDetailActivity extends AppCompatActivity {
                 });
 
     }
-    private void setUpVideoView(String url){
-        mediaController = new MediaController(this);
-        videoView.setMediaController(mediaController);
-        mediaController.setAnchorView(videoView);
-        Uri uri = Uri.parse(url);
-        videoView.setVideoURI(uri);
-        videoView.requestFocus();
-        videoView.start();
-    }
+
 }

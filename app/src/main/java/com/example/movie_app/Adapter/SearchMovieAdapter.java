@@ -16,16 +16,18 @@ import android.view.LayoutInflater;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class SearchMovieAdapter extends RecyclerView.Adapter<SearchMovieAdapter.SearchMovieViewHolder> {
 
-    List<Movies> searchMovieList;
+    List<Movies> searchMovie;
 
     public SearchMovieAdapter(List<Movies> searchMovieList) {
-        this.searchMovieList = searchMovieList;
+        this.searchMovie= searchMovieList;
     }
+
 
     @NonNull
     @Override
@@ -36,8 +38,8 @@ public class SearchMovieAdapter extends RecyclerView.Adapter<SearchMovieAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull SearchMovieViewHolder holder, int position) {
-        Movies movie = searchMovieList.get(position);
-        Glide.with(holder.imageView).load(movie.getMovieImage()).into(holder.imageView);
+        Movies movie = searchMovie.get(position);
+        Picasso.get().load(movie.getMovieImage()).into(holder.imageView);
         holder.nameMovie.setText(movie.getMovieName());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +53,7 @@ public class SearchMovieAdapter extends RecyclerView.Adapter<SearchMovieAdapter.
 
     @Override
     public int getItemCount() {
-        return searchMovieList.size();
+        return searchMovie.size();
     }
 
     public class SearchMovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

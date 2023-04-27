@@ -1,6 +1,10 @@
 package com.example.movie_app.Adapter;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,9 +31,11 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.FavVie
     private FirebaseFirestore db;
     private CollectionReference favoriteCollectionRef;
     private List<Favorite> favoriteList;
+    Context context;
 
-    public FavoriteAdapter(List<Favorite> favoriteList) {
+    public FavoriteAdapter(List<Favorite> favoriteList, Context context) {
         this.favoriteList = favoriteList;
+        this.context = context;
     }
 
     @NonNull
@@ -42,8 +48,8 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.FavVie
     @Override
     public void onBindViewHolder(@NonNull FavViewHolder holder, int position) {
         db = FirebaseFirestore.getInstance();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String currentUserId = user.getUid();
+        SharedPreferences sharedPreferences = context.getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        String currentUserId = sharedPreferences.getString("userId", "");
         favoriteCollectionRef = db.collection("users").document(currentUserId).collection("favorite");
 
         Favorite favorite = favoriteList.get(position);

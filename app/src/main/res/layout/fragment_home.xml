@@ -47,6 +47,12 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cardView2">
+                    <Button
+                        android:id="@+id/btnShowALl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="show all flim"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -54,9 +60,10 @@
                         android:text="Action Movie"
                         android:textAllCaps="true"
                         android:textStyle="bold"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:layout_margin="10dp"
                         android:textSize="18dp" />
+
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvActionMovie"
                         android:layout_width="match_parent"
@@ -80,7 +87,7 @@
                         android:text="Cartoon Movie"
                         android:textAllCaps="true"
                         android:textStyle="bold"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:layout_margin="10dp"
                         android:textSize="18dp" />
                     <androidx.recyclerview.widget.RecyclerView
@@ -106,7 +113,7 @@
                         android:text="Horror Movie"
                         android:textAllCaps="true"
                         android:textStyle="bold"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:layout_margin="10dp"
                         android:textSize="18dp" />
                     <androidx.recyclerview.widget.RecyclerView
@@ -132,7 +139,7 @@
                         android:text="Romance Movie"
                         android:textAllCaps="true"
                         android:textStyle="bold"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:layout_margin="10dp"
                         android:textSize="18dp" />
                     <androidx.recyclerview.widget.RecyclerView

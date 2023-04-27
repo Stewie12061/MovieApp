@@ -1,5 +1,6 @@
 package com.example.movie_app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,11 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.movie_app.Adapter.MovieAdapter;
+import com.example.movie_app.AllMovieActivity;
 import com.example.movie_app.Model.Movies;
 import com.example.movie_app.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -41,6 +44,7 @@ public class HomeFragment extends Fragment {
     RecyclerView rvMovieAction,rvCartoonMovie, rvHorrorMovie, rvRomanceMovie;
     MovieAdapter movieActionAdapter, movieCartoonAdapter, movieHorrorAdapter, movieRomanceAdapter;
 
+    Button btnShowAll;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -76,6 +80,15 @@ public class HomeFragment extends Fragment {
 
         rvRomanceMovie = view.findViewById(R.id.rvRomanceMovie);
         rvRomanceMovie.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false));
+
+        btnShowAll = view.findViewById(R.id.btnShowALl);
+        btnShowAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity().getApplicationContext(), AllMovieActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

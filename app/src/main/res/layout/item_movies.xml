@@ -36,7 +36,8 @@
             android:padding="8dp"
             android:ellipsize="end"
             android:maxLines="2"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             android:fontFamily="@font/releway_b7"
             android:textSize="16dp"/>
 

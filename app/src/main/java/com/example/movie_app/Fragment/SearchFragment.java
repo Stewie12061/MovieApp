@@ -16,13 +16,11 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 
 import com.example.movie_app.Adapter.SearchMovieAdapter;
-import com.example.movie_app.Model.Episode;
-import com.example.movie_app.Model.Movie;
+import com.example.movie_app.Model.Favorite;
 import com.example.movie_app.Model.Movies;
 import com.example.movie_app.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -77,13 +75,18 @@ public class SearchFragment extends Fragment {
                 return true;
             }
         });
+
     }
     private void searchMovies(String query) {
+/*
         Query movieQuery = db.collection("movies")
                 .whereGreaterThanOrEqualTo("movieName", query)
-                .whereLessThan("movieName", query + "\uf8ff")
-                .orderBy("movieName");
-
+                .whereLessThan("movieName", query + "\uf8ff");
+*/
+        Query movieQuery = db.collection("movies")
+                .orderBy("movieName")
+                .startAt(query)
+                .endAt(query + "\uf8ff");
         movieQuery.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {

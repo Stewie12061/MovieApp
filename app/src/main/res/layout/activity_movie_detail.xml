@@ -13,27 +13,29 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/dark_2"
             tools:context=".DetailActivity">
 
 
-            <VideoView
-                android:id="@+id/movie_trailer"
+            <ImageView
+                android:id="@+id/imgView"
                 android:layout_width="match_parent"
                 android:layout_height="260dp"
+                android:scaleType="center"
+                android:src="@drawable/avatar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
-            <ImageButton
+            <Button
                 android:id="@+id/button_back_detail"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="47dp"
+                android:drawableTint="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_back" />
+                android:drawableLeft="@drawable/ic_back" />
 
             <TextView
                 android:id="@+id/movie_name"
@@ -46,7 +48,7 @@
                 android:text="Ralph Breaks the Internet"
                 android:textSize="20dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/movie_trailer" />
+                app:layout_constraintTop_toBottomOf="@+id/imgView" />
 
             <TextView
                 android:id="@+id/detail_genre"
@@ -75,11 +77,32 @@
             <RelativeLayout
                 android:id="@+id/status_bar"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/movie_category">
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="25dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <ImageButton
+                        android:id="@+id/btnWatchMovie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/white"
+                        app:srcCompat="@drawable/play" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Watch Movie"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"/>
+                </LinearLayout>
             </RelativeLayout>
 
             <TextView

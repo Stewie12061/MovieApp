@@ -3,18 +3,22 @@
     <item
         android:id="@+id/nav_home"
         android:title="Home"
+        android:iconTint="@color/white"
         android:icon="@xml/ic_home"/>
     <item
         android:id="@+id/nav_search"
         android:icon="@xml/ic_search"
+        android:iconTint="@color/white"
         android:title="Search" />
     <item
         android:id="@+id/nav_favourite"
         android:title="Favorites"
+        android:iconTint="@color/white"
         android:icon="@xml/ic_bookmark"/>
     <item
         android:id="@+id/nav_account"
         android:title="Profile"
+        android:iconTint="@color/white"
         android:icon="@xml/ic_user"/>
 
 </menu>
